@@ -1,0 +1,2 @@
+The QA test references have been generated using CMC QA suite v1.5, Verilog-A code of BSIMSOIv4.5.0 and HSPICE -- G-2012.06.
+
