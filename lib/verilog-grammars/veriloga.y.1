@@ -1,0 +1,887 @@
+/* File automatically created by ./mkgrammar.pl */
+
+%
+/*
+%left PREC_IF_THEN
+%left tk_else
+
+%union
+
+
+%token <_lexval> tk_parameter
+%token <_lexval> tk_module
+%token <_lexval> tk_ground
+%token <_lexval> tk_case
+%token <_lexval> tk_end
+%token <_lexval> tk_analog
+%token <_lexval> tk_inout
+%token <_lexval> tk_if
+%token <_lexval> tk_begin
+%token <_lexval> tk_number
+%token <_lexval> tk_from
+%token <_lexval> tk_char
+%token <_lexval> tk_string
+%token <_lexval> tk_bitwise_equr
+%token <_lexval> tk_real
+%token <_lexval> tk_endattribute
+%token <_lexval> tk_op_shl
+%token <_lexval> tk_nature
+%token <_lexval> tk_for
+%token <_lexval> tk_beginattribute
+%token <_lexval> tk_branch
+%token <_lexval> tk_domain
+%token <_lexval> tk_exclude
+%token <_lexval> tk_potential
+%token <_lexval> tk_integer
+%token <_lexval> tk_endcase
+%token <_lexval> tk_enddiscipline
+%token <_lexval> tk_anystring
+%token <_lexval> tk_ident
+%token <_lexval> tk_discipline
+%token <_lexval> tk_anytext
+%token <_lexval> tk_or
+%token <_lexval> tk_dollar_ident
+%token <_lexval> tk_input
+%token <_lexval> tk_function
+%token <_lexval> tk_endmodule
+%token <_lexval> tk_inf
+%token <_lexval> tk_endnature
+%token <_lexval> tk_default
+%token <_lexval> tk_op_shr
+%token <_lexval> tk_aliasparameter
+%token <_lexval> tk_and
+%token <_lexval> tk_flow
+%token <_lexval> tk_output
+%token <_lexval> tk_aliasparam
+%token <_lexval> tk_while
+%token <_lexval> tk_endfunction
+%token <_lexval> tk_else
+
+%type <_yaccval> R_admsParse
+%type <_yaccval> R_l.admsParse
+%type <_yaccval> R_s.admsParse
+%type <_yaccval> R_discipline_member
+%type <_yaccval> R_discipline_name
+%type <_yaccval> R_l.discipline_assignment
+%type <_yaccval> R_s.discipline_assignment
+%type <_yaccval> R_discipline.naturename
+%type <_yaccval> R_nature_member
+%type <_yaccval> R_l.nature_assignment
+%type <_yaccval> R_s.nature_assignment
+%type <_yaccval> R_d.attribute.0
+%type <_yaccval> R_d.attribute
+%type <_yaccval> R_l.attribute
+%type <_yaccval> R_s.attribute
+%type <_yaccval> R_d.module
+%type <_yaccval> R_modulebody
+%type <_yaccval> R_netlist
+%type <_yaccval> R_l.instance
+%type <_yaccval> R_d.terminal
+%type <_yaccval> R_l.terminal.0
+%type <_yaccval> R_l.terminal
+%type <_yaccval> R_s.terminal
+%type <_yaccval> R_l.declaration
+%type <_yaccval> R_s.declaration.withattribute
+%type <_yaccval> R_d.attribute.global
+%type <_yaccval> R_s.declaration
+%type <_yaccval> R_d.node
+%type <_yaccval> R_node.type
+%type <_yaccval> R_l.terminalnode
+%type <_yaccval> R_l.node
+%type <_yaccval> R_s.terminalnode
+%type <_yaccval> R_s.node
+%type <_yaccval> R_d.branch
+%type <_yaccval> R_l.branchalias
+%type <_yaccval> R_s.branchalias
+%type <_yaccval> R_s.branch
+%type <_yaccval> R_d.analogfunction
+%type <_yaccval> R_d.analogfunction.proto
+%type <_yaccval> R_d.analogfunction.name
+%type <_yaccval> R_l.analogfunction.declaration
+%type <_yaccval> R_s.analogfunction.declaration
+%type <_yaccval> R_l.analogfunction.input.variable
+%type <_yaccval> R_l.analogfunction.output.variable
+%type <_yaccval> R_l.analogfunction.inout.variable
+%type <_yaccval> R_l.analogfunction.integer.variable
+%type <_yaccval> R_l.analogfunction.real.variable
+%type <_yaccval> R_variable.type
+%type <_yaccval> R_d.variable.end
+%type <_yaccval> R_l.parameter
+%type <_yaccval> R_l.variable
+%type <_yaccval> R_d.aliasparameter
+%type <_yaccval> R_d.aliasparameter.token
+%type <_yaccval> R_s.parameter
+%type <_yaccval> R_s.variable
+%type <_yaccval> R_s.parameter.name
+%type <_yaccval> R_s.variable.name
+%type <_yaccval> R_s.parameter.range
+%type <_yaccval> R_l.interval
+%type <_yaccval> R_s.interval
+%type <_yaccval> R_d.interval
+%type <_yaccval> R_interval.inf
+%type <_yaccval> R_interval.sup
+%type <_yaccval> R_analog
+%type <_yaccval> R_analogcode
+%type <_yaccval> R_l.expression
+%type <_yaccval> R_analogcode.atomic
+%type <_yaccval> R_analogcode.block
+%type <_yaccval> R_analogcode.block.atevent
+%type <_yaccval> R_l.analysis
+%type <_yaccval> R_s.analysis
+%type <_yaccval> R_d.block
+%type <_yaccval> R_d.block.begin
+%type <_yaccval> R_l.blockitem
+%type <_yaccval> R_d.blockvariable
+%type <_yaccval> R_l.blockvariable
+%type <_yaccval> R_s.blockvariable
+%type <_yaccval> R_d.contribution
+%type <_yaccval> R_contribution
+%type <_yaccval> R_source
+%type <_yaccval> R_d.while
+%type <_yaccval> R_d.for
+%type <_yaccval> R_d.case
+%type <_yaccval> R_l.case.item
+%type <_yaccval> R_s.case.item
+%type <_yaccval> R_s.instance
+%type <_yaccval> R_instance.module.name
+%type <_yaccval> R_l.instance.parameter
+%type <_yaccval> R_s.instance.parameter
+%type <_yaccval> R_s.assignment
+%type <_yaccval> R_d.conditional
+%type <_yaccval> R_s.expression
+%type <_yaccval> R_l.enode
+%type <_yaccval> R_s.function_expression
+%type <_yaccval> R_expression
+%type <_yaccval> R_e.conditional
+%type <_yaccval> R_e.bitwise_equ
+%type <_yaccval> R_e.bitwise_xor
+%type <_yaccval> R_e.bitwise_or
+%type <_yaccval> R_e.bitwise_and
+%type <_yaccval> R_e.logical_or
+%type <_yaccval> R_e.logical_and
+%type <_yaccval> R_e.comp_equ
+%type <_yaccval> R_e.comp
+%type <_yaccval> R_e.bitwise_shift
+%type <_yaccval> R_e.arithm_add
+%type <_yaccval> R_e.arithm_mult
+%type <_yaccval> R_e.unary
+%type <_yaccval> R_e.atomic
+*/
+%%
+R_admsParse
+        : R_l.admsParse
+          
+        ;
+R_l.admsParse
+        : R_s.admsParse
+          
+        | R_l.admsParse R_s.admsParse
+          
+        ;
+R_s.admsParse
+        : R_d.module
+          
+        | R_discipline_member
+          
+        | R_nature_member
+          
+        ;
+R_discipline_member
+        : tk_discipline R_discipline_name R_l.discipline_assignment tk_enddiscipline
+          
+        ;
+R_discipline_name
+        : tk_ident
+          
+        ;
+R_l.discipline_assignment
+        : R_s.discipline_assignment
+          
+        | R_l.discipline_assignment R_s.discipline_assignment
+          
+        ;
+R_s.discipline_assignment
+        : tk_potential R_discipline.naturename ';'
+          
+        | tk_flow R_discipline.naturename ';'
+          
+        | tk_domain tk_ident ';'
+          
+        ;
+R_discipline.naturename
+        : tk_ident
+          
+        ;
+R_nature_member
+        : tk_nature tk_ident R_l.nature_assignment tk_endnature
+          
+        ;
+R_l.nature_assignment
+        : R_s.nature_assignment
+          
+        | R_l.nature_assignment R_s.nature_assignment
+          
+        ;
+R_s.nature_assignment
+        : tk_ident '=' tk_number ';'
+          
+        | tk_ident '=' tk_number tk_ident ';'
+          
+        | tk_ident '=' tk_anystring ';'
+          
+        | tk_ident '=' tk_ident ';'
+          
+        ;
+R_d.attribute.0
+        : 
+          
+        | R_d.attribute
+          
+        ;
+R_d.attribute
+        : tk_beginattribute R_l.attribute tk_endattribute
+          
+        | tk_beginattribute tk_anytext
+          
+        | tk_beginattribute tk_endattribute
+          
+        ;
+R_l.attribute
+        : R_s.attribute
+          
+        | R_l.attribute R_s.attribute
+          
+        ;
+R_s.attribute
+        : tk_ident '=' tk_anystring
+          
+        ;
+R_d.module
+        : R_d.attribute.0 tk_module tk_ident
+          
+         R_d.terminal R_modulebody tk_endmodule
+          
+        ;
+R_modulebody
+        : 
+          
+        | R_l.declaration
+          
+        | R_netlist
+          
+        | R_l.declaration R_netlist
+          
+        ;
+R_netlist
+        : R_analog
+          
+        | R_l.instance
+          
+        | R_l.instance R_analog
+          
+        | R_analog R_l.instance
+          
+        | R_l.instance R_analog R_l.instance
+          
+        ;
+R_l.instance
+        : R_s.instance
+          
+        | R_l.instance R_s.instance
+          
+        ;
+R_d.terminal
+        : '(' R_l.terminal.0 ')' R_d.attribute.0 ';'
+          
+        ;
+R_l.terminal.0
+        : 
+          
+        | R_l.terminal
+          
+        ;
+R_l.terminal
+        : R_s.terminal
+          
+        | R_l.terminal ',' R_s.terminal
+          
+        ;
+R_s.terminal
+        : tk_ident
+          
+        ;
+R_l.declaration
+        : R_s.declaration.withattribute
+          
+        | R_l.declaration R_s.declaration.withattribute
+          
+        ;
+R_s.declaration.withattribute
+        : R_s.declaration
+          
+        | R_d.attribute.global R_s.declaration
+          
+        ;
+R_d.attribute.global
+        : R_d.attribute
+          
+        ;
+R_s.declaration
+        : R_d.node
+          
+        | R_d.branch
+          
+        | tk_parameter R_variable.type R_l.parameter R_d.variable.end
+          
+        | tk_parameter R_l.parameter R_d.variable.end
+          
+        | R_variable.type R_l.variable R_d.variable.end
+          
+        | R_d.aliasparameter
+          
+        | R_d.analogfunction
+          
+        | ';'
+          
+        ;
+R_d.node
+        : R_node.type R_l.terminalnode ';'
+          
+        | tk_ground R_l.node ';'
+          
+        | tk_ident R_l.node ';'
+          
+        ;
+R_node.type
+        : tk_input
+          
+        | tk_output
+          
+        | tk_inout
+          
+        ;
+R_l.terminalnode
+        : R_s.terminalnode
+          
+        | R_l.terminalnode ',' R_s.terminalnode
+          
+        ;
+R_l.node
+        : R_s.node
+          
+        | R_l.node ',' R_s.node
+          
+        ;
+R_s.terminalnode
+        : tk_ident R_d.attribute.0
+          
+        ;
+R_s.node
+        : tk_ident R_d.attribute.0
+          
+        ;
+R_d.branch
+        : tk_branch R_s.branch ';'
+          
+        ;
+R_l.branchalias
+        : R_s.branchalias
+          
+        | R_l.branchalias ',' R_s.branchalias
+          
+        ;
+R_s.branchalias
+        : tk_ident
+          
+        ;
+R_s.branch
+        : '(' tk_ident ',' tk_ident ')' R_l.branchalias
+          
+        | '(' tk_ident ')' R_l.branchalias
+          
+        ;
+R_d.analogfunction
+        : R_d.analogfunction.proto R_l.analogfunction.declaration R_analogcode.block tk_endfunction
+          
+        ;
+R_d.analogfunction.proto
+        : tk_analog tk_function R_d.analogfunction.name ';'
+          
+        | tk_analog tk_function tk_integer R_d.analogfunction.name ';'
+          
+        | tk_analog tk_function tk_real R_d.analogfunction.name ';'
+          
+        ;
+R_d.analogfunction.name
+        : tk_ident
+          
+        ;
+R_l.analogfunction.declaration
+        : R_s.analogfunction.declaration
+          
+        | R_l.analogfunction.declaration R_s.analogfunction.declaration
+          
+        ;
+R_s.analogfunction.declaration
+        : tk_input R_l.analogfunction.input.variable ';'
+          
+        | tk_output R_l.analogfunction.output.variable ';'
+          
+        | tk_inout R_l.analogfunction.inout.variable ';'
+          
+        | tk_integer R_l.analogfunction.integer.variable ';'
+          
+        | tk_real R_l.analogfunction.real.variable ';'
+          
+        ;
+R_l.analogfunction.input.variable
+        : tk_ident
+          
+        | R_l.analogfunction.input.variable ',' tk_ident
+          
+        ;
+R_l.analogfunction.output.variable
+        : tk_ident
+          
+        | R_l.analogfunction.output.variable ',' tk_ident
+          
+        ;
+R_l.analogfunction.inout.variable
+        : tk_ident
+          
+        | R_l.analogfunction.inout.variable ',' tk_ident
+          
+        ;
+R_l.analogfunction.integer.variable
+        : tk_ident
+          
+        | R_l.analogfunction.integer.variable ',' tk_ident
+          
+        ;
+R_l.analogfunction.real.variable
+        : tk_ident
+          
+        | R_l.analogfunction.real.variable ',' tk_ident
+          
+        ;
+R_variable.type
+        : tk_integer R_d.attribute.0
+          
+        | tk_real R_d.attribute.0
+          
+        | tk_string R_d.attribute.0
+          
+        ;
+R_d.variable.end
+        : ';'
+          
+        ;
+R_l.parameter
+        : R_s.parameter
+          
+        | R_l.parameter ',' R_s.parameter
+          
+        ;
+R_l.variable
+        : R_s.variable
+          
+        | R_l.variable ',' R_s.variable
+          
+        ;
+R_d.aliasparameter
+        : R_d.aliasparameter.token tk_ident '=' tk_ident R_d.attribute.0 ';'
+          
+        ;
+R_d.aliasparameter.token
+        : tk_aliasparameter
+          
+        | tk_aliasparam
+          
+        ;
+R_s.parameter
+        : R_s.parameter.name R_d.attribute.0
+          
+        ;
+R_s.variable
+        : R_s.variable.name R_d.attribute.0
+          
+        ;
+R_s.parameter.name
+        : R_s.variable.name '=' R_s.expression R_s.parameter.range
+          
+        | R_s.variable.name '=' '' R_s.parameter.range
+          
+        ;
+R_s.variable.name
+        : tk_ident
+          
+        | tk_ident '[' tk_number ':' tk_number ']'
+          
+        ;
+R_s.parameter.range
+        : 
+          
+        | R_l.interval
+          
+        ;
+R_l.interval
+        : R_s.interval
+          
+        | R_l.interval R_s.interval
+          
+        ;
+R_s.interval
+        : tk_from R_d.interval
+          
+        | tk_exclude R_d.interval
+          
+        ;
+R_d.interval
+        : '(' R_interval.inf ':' R_interval.sup ')'
+          
+        | '(' R_interval.inf ':' R_interval.sup ']'
+          
+        | '[' R_interval.inf ':' R_interval.sup ')'
+          
+        | '[' R_interval.inf ':' R_interval.sup ']'
+          
+        | R_s.expression
+          
+        ;
+R_interval.inf
+        : R_s.expression
+          
+        | '-' tk_inf
+          
+        ;
+R_interval.sup
+        : R_s.expression
+          
+        | tk_inf
+          
+        | '+' tk_inf
+          
+        ;
+R_analog
+        : tk_analog R_analogcode
+          
+        ;
+R_analogcode
+        : R_analogcode.atomic
+          
+        | R_analogcode.block
+          
+        ;
+R_l.expression
+        : R_s.expression
+          
+        | R_l.expression ',' R_s.expression
+          
+        ;
+R_analogcode.atomic
+        : R_d.attribute.0 R_d.blockvariable
+          
+        | R_d.contribution
+          
+        | R_s.assignment ';'
+          
+        | R_d.conditional
+          
+        | R_d.while
+          
+        | R_d.case
+          
+        | R_d.for
+          
+        | tk_dollar_ident '(' R_l.expression ')' ';'
+          
+        | tk_dollar_ident '(' ')' ';'
+          
+        | tk_dollar_ident ';'
+          
+        | ';'
+          
+        ;
+R_analogcode.block
+        : R_d.block
+          
+        | R_analogcode.block.atevent R_d.block
+          
+        ;
+R_analogcode.block.atevent
+        : '@' '(' tk_ident '(' R_l.analysis ')' ')'
+          
+        | '@' tk_ident
+          
+        | '@' '(' tk_ident ')'
+          
+        ;
+R_l.analysis
+        : R_s.analysis
+          
+        | R_l.analysis ',' R_s.analysis
+          
+        ;
+R_s.analysis
+        : tk_anystring
+          
+        ;
+R_d.block
+        : R_d.block.begin tk_end
+          
+        | R_d.block.begin ':' tk_ident tk_end
+          
+        | R_d.block.begin R_l.blockitem tk_end
+          
+        | R_d.block.begin ':' tk_ident R_l.blockitem tk_end
+          
+        ;
+R_d.block.begin
+        : R_d.attribute.0 tk_begin
+          
+        ;
+R_l.blockitem
+        : R_analogcode
+          
+        | R_l.blockitem R_analogcode
+          
+        ;
+R_d.blockvariable
+        : tk_integer R_l.blockvariable ';'
+          
+        | tk_real R_l.blockvariable ';'
+          
+        | tk_string R_l.blockvariable ';'
+          
+        ;
+R_l.blockvariable
+        : R_s.blockvariable
+          
+        | R_l.blockvariable ',' R_s.blockvariable
+          
+        ;
+R_s.blockvariable
+        : tk_ident
+          
+        | tk_ident '[' tk_number ':' tk_number ']'
+          
+        ;
+R_d.contribution
+        : R_contribution R_d.attribute.0 ';'
+          
+        ;
+R_contribution
+        : R_source '<' '+' R_s.expression
+          
+        ;
+R_source
+        : tk_ident '(' tk_ident ',' tk_ident ')'
+          
+        | tk_ident '(' tk_ident ')'
+          
+        ;
+R_d.while
+        : tk_while '(' R_s.expression ')' R_analogcode
+          
+        ;
+R_d.for
+        : tk_for '(' R_s.assignment ';' R_s.expression ';' R_s.assignment ')' R_analogcode
+          
+        ;
+R_d.case
+        : tk_case '(' R_s.expression ')' R_l.case.item tk_endcase
+          
+        ;
+R_l.case.item
+        : R_s.case.item
+          
+        | R_l.case.item R_s.case.item
+          
+        ;
+R_s.case.item
+        : R_l.enode ':' R_analogcode
+          
+        | tk_default ':' R_analogcode
+          
+        | tk_default R_analogcode
+          
+        ;
+R_s.instance
+        : R_instance.module.name '#' '(' R_l.instance.parameter ')' tk_ident '(' R_l.node ')' ';'
+          
+        ;
+R_instance.module.name
+        : tk_ident
+          
+        ;
+R_l.instance.parameter
+        : R_s.instance.parameter
+          
+        | R_l.instance.parameter ',' R_s.instance.parameter
+          
+        ;
+R_s.instance.parameter
+        : '.' tk_ident '(' R_s.expression ')'
+          
+        ;
+R_s.assignment
+        : tk_ident '=' R_s.expression
+          
+        | R_d.attribute tk_ident '=' R_s.expression
+          
+        | tk_ident '[' R_expression ']' '=' R_s.expression
+          
+        | R_d.attribute tk_ident '[' R_expression ']' '=' R_s.expression
+          
+        ;
+R_d.conditional
+        : tk_if '(' R_s.expression ')' R_analogcode
+           %prec PREC_IF_THEN
+        | tk_if '(' R_s.expression ')' R_analogcode tk_else R_analogcode
+          
+        ;
+R_s.expression
+        : R_expression
+          
+        ;
+R_l.enode
+        : R_s.function_expression
+          
+        | R_l.enode ',' R_s.function_expression
+          
+        ;
+R_s.function_expression
+        : R_expression
+          
+        ;
+R_expression
+        : R_e.conditional
+          
+        ;
+R_e.conditional
+        : R_e.bitwise_equ
+          
+        | R_e.bitwise_equ '?' R_e.bitwise_equ ':' R_e.bitwise_equ
+          
+        ;
+R_e.bitwise_equ
+        : R_e.bitwise_xor
+          
+        | R_e.bitwise_equ tk_bitwise_equr R_e.bitwise_xor
+          
+        | R_e.bitwise_equ '~' '^' R_e.bitwise_xor
+          
+        ;
+R_e.bitwise_xor
+        : R_e.bitwise_or
+          
+        | R_e.bitwise_xor '^' R_e.bitwise_or
+          
+        ;
+R_e.bitwise_or
+        : R_e.bitwise_and
+          
+        | R_e.bitwise_or '|' R_e.bitwise_and
+          
+        ;
+R_e.bitwise_and
+        : R_e.logical_or
+          
+        | R_e.bitwise_and '&' R_e.logical_or
+          
+        ;
+R_e.logical_or
+        : R_e.logical_and
+          
+        | R_e.logical_or tk_or R_e.logical_and
+          
+        ;
+R_e.logical_and
+        : R_e.comp_equ
+          
+        | R_e.logical_and tk_and R_e.comp_equ
+          
+        ;
+R_e.comp_equ
+        : R_e.comp
+          
+        | R_e.comp_equ '=' '=' R_e.comp
+          
+        | R_e.comp_equ '!' '=' R_e.comp
+          
+        ;
+R_e.comp
+        : R_e.bitwise_shift
+          
+        | R_e.comp '<' R_e.bitwise_shift
+          
+        | R_e.comp '<' '=' R_e.bitwise_shift
+          
+        | R_e.comp '>' R_e.bitwise_shift
+          
+        | R_e.comp '>' '=' R_e.bitwise_shift
+          
+        ;
+R_e.bitwise_shift
+        : R_e.arithm_add
+          
+        | R_e.bitwise_shift tk_op_shr R_e.arithm_add
+          
+        | R_e.bitwise_shift tk_op_shl R_e.arithm_add
+          
+        ;
+R_e.arithm_add
+        : R_e.arithm_mult
+          
+        | R_e.arithm_add '+' R_e.arithm_mult
+          
+        | R_e.arithm_add '-' R_e.arithm_mult
+          
+        ;
+R_e.arithm_mult
+        : R_e.unary
+          
+        | R_e.arithm_mult '*' R_e.unary
+          
+        | R_e.arithm_mult '/' R_e.unary
+          
+        | R_e.arithm_mult '%' R_e.unary
+          
+        ;
+R_e.unary
+        : R_e.atomic
+          
+        | '+' R_e.atomic
+          
+        | '-' R_e.atomic
+          
+        | '!' R_e.atomic
+          
+        | '~' R_e.atomic
+          
+        ;
+R_e.atomic
+        : tk_number
+          
+        | tk_number tk_ident
+          
+        | tk_char
+          
+        | tk_anystring
+          
+        | tk_ident
+          
+        | tk_dollar_ident
+          
+        | tk_ident '[' R_expression ']'
+          
+        | tk_dollar_ident '(' R_l.enode ')'
+          
+        | tk_ident '(' R_l.enode ')'
+          
+        | '(' R_expression ')'
+          
+        ;
+%%
+void adms_veriloga_setint_yydebug(const int val)
+
